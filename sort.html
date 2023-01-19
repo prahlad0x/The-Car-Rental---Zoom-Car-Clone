@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAR RENTAL-Sort</title>
+    <link rel="icon" href="./logo2.png" type="img/-icon">
+    <style>
+    .navbar{
+        
+    color: white;
+    box-sizing: border-box;    
+    display: flex;
+    height: 69px;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgb(32, 28, 28);
+    padding: 10px 20px;
+    /* margin-top: -16px; */
+    
+}
+body{
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+   margin: 0px;
+   padding: 0px;
+}
+
+.navbar > div:nth-child(2){
+    width:30%;
+    /* border:  2px solid red; */
+    display: flex;
+    align-items: center;
+    
+    justify-content: space-between;
+
+}
+
+#logo{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#logo > a {
+    text-decoration: none;
+    color: white;
+
+}
+
+#log{
+    justify-content: space-evenly;
+    font-size: x-large;
+    width: 45%;
+    display: flex;
+    align-items: center;
+}
+.navbar h1,h3{
+    margin: 0px;
+    text-align: center;
+}
+
+#host > a {
+    text-decoration: none;
+    /* border: 1px solid white; */
+}
+#host >a > h2{
+   
+    color: black;
+    background-color: white;
+    padding: 5px 20px;
+    border-radius: 18px;
+    font-weight: 400;
+}
+#logo img{
+    margin-right: 10px;
+    width: 10%;
+    border-radius: 30px;
+/* border: 3px solid red; */
+}
+#sort > div>span{
+    font-weight: 400;
+    font-size: xx-large;
+    margin-right: 20px;
+}
+#sort{
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    font-size: larger;
+    display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+#sort > div >select{
+    border-radius: 25px;
+    padding: 5px;
+    align-items: center;
+    font-size: larger;
+    margin-right: 20px;
+}
+#sort >div{
+    margin-left: 30px;
+}
+#search{
+    /* border: 1px solid black; */
+    border: 1px solid #e0e0e0;
+    padding: 5px;
+    font-size: larger;
+    margin: right;
+}
+#sort  button{
+    border-radius: 20px;
+    padding: 5px;
+    font-size: larger;
+    margin-left: 20px;
+    margin-right: 30px;
+    border: 1px solid #e0e0e0;
+}
+#sort  button:hover{
+    cursor: pointer;
+}
+#container{
+    width: 80%;
+    margin: auto;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 50px;
+    }
+#container> div > img{
+width: 100%;
+background-image: url("https://www.zoomcar.com/img/marketplace-background.png");
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+}
+#container > div{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border: 1px solid #e0e0e0;
+}
+#container > div >div{
+    margin-left: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div id="logo">
+            <img src="./s.png" alt="error">
+            <a href="index.html" >
+
+                <div>
+                    <h1>Car Rental</h1>
+                    <h3>Travel With Comfort</h3>
+                </div>
+            </a>
+            
+        </div>
+        <div>
+        <div id="host">
+            <!-- <span></span><img src="./t.png" alt="error"> -->
+            <a href="host.html"><h2>Become a Host</h2></a>
+        </div>
+        <div id="log">Login/Signup 
+            <img src="https://www.zoomcar.com/img/icons/icons_user.png" alt="error">
+        </div>
+    </div>
+</div>
+<div id="sort"> 
+    <div>
+       <span>Sort & Filter By :-</span>
+    <select  id="sbyprice">
+        <option value=""> Price</option>
+        <option value="Low to High">Low to High</option>
+        <option value="High to Low">High to Low</option>
+    </select>
+    <select id="sbyfuel">
+        <option value="">Fuel</option>
+        <option value="Petrol">Petrol</option>
+        <option value="Diesel">Diesel</option>
+    </select>
+    <select id="sbytype">
+        <option value="">Type</option>
+        <option value="Man">Manual</option>
+        <option value="Auto">Automatic</option>
+    </select>
+    </div>
+
+    <div>
+    <input type="search" id="search" placeholder='Try Search "Tata Hexa"'> 
+    <button>Search</button>
+    </div>
+</div>
+<div id="container">
+
+
+</div>
+</body>
+<script>
+    const sortdata = "https://63c79ab5e52516043f40b73b.mockapi.io/sort"
+    let cont = document.getElementById("container")
+    fetchdata(sortdata)
+
+    async function fetchdata(url){
+        try {
+            let request = await fetch(url)
+            let data = await request.json()
+            // console.log(data)
+            cars = data
+            display(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    function display(data){
+        // console.log(data)
+        cont.innerHTML = ''
+        if(data.length == 0){
+            h = document.createElement("h1")
+            h.innerText = " This Car Is Currently Unavailable! "
+            h.style.textAlign="center"
+            cont.style.display="block"
+            cont.append(h)
+        }
+        else{
+            cont.style.display="grid"
+        data.forEach((element) => {
+            card = document.createElement("div")
+            img = document.createElement("img")
+            names = document.createElement("h2")
+            type = document.createElement("p")
+            rent = document.createElement("h2")
+            di = document.createElement("div")
+
+            img.setAttribute("src", element.img)
+            names.innerText = element.name
+            type.innerText = element.type
+            rent.innerText = "₹ "+element.price
+
+            di.append(names, type, rent)
+            card.append(img, di)
+            cont.append(card)
+        });
+    }
+    }
+    
+    let price = document.getElementById("sbyprice")
+    price.addEventListener("change", ()=>{
+        if(price.value == ''){
+            display(cars)
+        }
+        else if(price.value == "Low to High"){
+            sorted = cars.sort((a,b)=>{
+                return a.price - b.price;
+            })
+            // console.log(sorted)
+            display(sorted)
+            
+
+        }
+        else if(price.value == "High to Low"){
+            sorted = cars.sort((a,b)=>{
+                return b.price - a.price;
+            })
+            // console.log(sorted)
+            display(sorted)
+        }
+    })
+ 
+    let fuel = document.getElementById("sbyfuel")
+    fuel.addEventListener("change", ()=>{
+        if(fuel.value == ""){
+            display(cars)
+        }
+        else if(fuel.value == "Petrol"){
+            Petrol = cars.filter((ele)=>{
+               let x = ele.type.includes("Petrol")
+               return x;
+            })
+            fuel.value = ""
+           display(Petrol)
+
+        }
+        else if(fuel.value == "Diesel"){
+            Diesel = cars.filter((ele)=>{
+               let x = ele.type.includes("iesel")
+               return x;
+            })
+            display(Diesel)
+            fuel.value = ""
+        }
+        
+    })
+
+    let types = document.getElementById("sbytype")
+    types.addEventListener("change", ()=>{
+        if(types.value== ""){
+            display(cars)
+        }
+        else {
+            typed = cars.filter((el)=>{
+                let x = el.type.includes(types.value)
+                return x;
+            })
+            display(typed)
+        }
+    })
+
+    let naam = document.getElementById("search")
+    let search = document.querySelector("#sort button")
+    search.addEventListener("click", ()=>{
+        if(naam.value == ""){
+            display(cars)
+        }
+        else{
+            searched = cars.filter((e)=>{
+                let x = e.name.toLowerCase().includes(naam.value.toLowerCase())
+                return x;
+            })
+            display(searched)
+        }
+    })
+</script>
+</html>

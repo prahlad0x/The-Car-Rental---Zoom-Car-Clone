@@ -1,4 +1,6 @@
 .navbar{
+    position: fixed;
+    width: 100%;
     color: white;
     box-sizing: border-box;    
     display: flex;
@@ -7,7 +9,7 @@
     align-items: center;
     background-color:rgb(32, 28, 28);
     padding: 10px 20px;
-    
+    margin-bottom: 10px;
 }
 
 .navbar > div:nth-child(2){
@@ -65,8 +67,8 @@
      background-image: url("./hero-banner-web.png");
     background-repeat: no-repeat;
     background-position: center center;
-    margin-top: 0px;
-    height:650px;
+   
+    height:800px;
    width: 100%;
    padding-top: 40px;
    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 0px 500px inset;
@@ -80,13 +82,20 @@
     width: 70%;
     margin: auto;
     font-size: larger;
-    margin-top: 0px;
+    margin-top: 50px;
     color: white;
     background: rgba(0,0,0,0.4);
     background-size: cover;
     padding:20px 0px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 0px 500px inset;
    
+}
+.topup > h1{
+    font-size: 36px;
+    font-weight: 500;
+}
+.topup > h3{
+    font-size: 25px;
 }
 body{
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;;
@@ -107,56 +116,325 @@ body{
    grid-template-columns: repeat(2,1fr);
   text-align: center;
 }
-.topdown>div>input{
+.topdown>div>button{
+    cursor: pointer;
     font-size: large;
     border: none;
-    padding-left: 20%;
+    
     font-weight: 500;
     color: black;
      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
 }
-.topdown>div>input:nth-child(1){
+.topdown>div>button:nth-child(1){
     border: 1px solid green;
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
 }
-.topdown>div>input:nth-child(2){
+.topdown>div>button:nth-child(2){
     /* border: 0.5px solid white; */
     border-top-right-radius: 7px;
     border-bottom-right-radius: 7px;
 }
 .topdown>input{
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    padding-left: 20%;
+   
 border: none;
 border-radius: 7px;
 font-size: large;
 }
 .topdown>button{
+    cursor: pointer;
     font-size: larger;
     font-weight: 700;
     border-radius: 7px;
     border: none;
+    color: white;
+    background-color: rgb(6, 155, 6);
 }
 #tophead{
+    font-size: 50px;
     text-align: center;
     margin-top: 50px;
-    font-weight:300;
+    font-weight:400;
 }
 .slide{
+
     padding: 35px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 550px;
-    border: 2px solid green;
+    /* border: 2px solid green; */
     margin-top: 40px;   
 }
 .slide > span{
-    font-size: 50px;
-    font-weight: 700;
+    font-size: 60px;
+    font-weight: 300;
     border-radius: 60px;
-    padding: 20px 35px;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    padding: 0px 20px 8px 20px;
+    box-shadow:0 0 8px 0 rgb(0 0 0 / 20%);
     cursor: pointer;
+    /* border: 2px solid red; */
+}
+.slide > span:nth-child(1){
+    margin-left: 8%;
+    padding-right: 25px;
+}
+#inc{
+    margin-right: 8%;
+    padding-left: 25px;
+
+}
+#slider{
+    width:60%;
+    margin: auto;
+    /* border: 1px solid black; */
+    /* height: 550px; */
+   padding-bottom: 0px;
+
+}
+#slider  >img{
+    width:100%;
+    /* border: 1px solid black; */
+    margin: auto;
+    
+}
+#slider >h1{
+    font-size:50px;
+    color: #666666;
+margin-bottom: -110px;
+}
+#slider> h2{
+    font-size:30px;
+
+    margin-bottom: -25px;
+    color: #706c6ca8;
+}
+#middleimg{
+    height: 650px;
+    margin-top: 80px;
+    background-image: url("https://zoomcar-assets.zoomcar.com/images/original/97c77ce8da5affded5e3c4bde712044a90728781.png?1672044755");
+    /* background-repeat: no-repeat; */
+    background-position: center;
+    background-position: auto;
+    padding: 50px;
+
+}
+.middleup{
+    text-align: center;
+    /* border: 2px solid black; */
+    width: 70%;
+    margin: auto;
+    font-size: larger;
+    margin-top: 0px;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    background-size: cover;
+    padding:20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 0px 500px inset;
+   
+}
+
+#middleimg > .middleup > h1{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.29;
+    letter-spacing: normal;
+    color: #fff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#middleimg > .middleup > h3{
+  
+    margin-top: 16px;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.29;
+    letter-spacing: normal;
+    color: #fff;
+}
+.middlelast{
+    text-align: center;
+    padding: 80px;
+    
+    
+}
+.middlelast> h1{
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.middlelast > p{
+    margin-top: 0px;
+    font-size: 30px;
+    font-weight: 400;
+    /* border: 2px solid red; */
+}
+
+#slide2 a{
+    text-decoration: none;
+    width: 85%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 40px;
+}
+#slide2 > a h2{
+    color: white;
+    padding-left: 10px;
+    margin-top: -100px;
+    margin-bottom: 0px;
+    font-size: xx-large;
+}
+
+#slide2 >a> div> img{
+    width: 100%;
+    margin-bottom: 0px;
+}
+#lastimg{
+    background-image: url("https://zoomcar-assets.zoomcar.com/images/original/25371b7b5084fc451b0c3ec9eda278f791188c69.png?1672044863");
+    /* background-repeat: no-repeat; */
+    background-position: center;
+    
+    height: 650px;
+    padding: 40px;
+}
+#info{
+    padding: 40px;
+    background-color:#383838;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    text-align: center;
+}
+#info > a{
+    text-decoration: none;
+    font-size: x-large;
+    color: white;
+    font-weight: 500;
+}
+#info> a:hover{
+    text-decoration:underline;
+}
+
+#lastone{
+    padding: 42px 84px;
+    background-color: #666666;
+    color: white;
+}
+
+#table > table{
+    width: 100%;
+}
+#lastone h3{
+    font-size: large;
+    padding-bottom: 20px;
+    text-align: left;
+}
+
+#table > table td{
+    font-size: larger;
+    padding: 15px 0px;
+}
+#bottom{
+    padding:30px;
+    border-top: 2px solid #e7dfdf;
+    border-bottom: 2px solid #e7dfdf;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#bottom > div:nth-child(2){
+    display: flex;
+    padding: 10px;
+}
+#bottom > div>h1{
+    font-size: 60px;
+    margin: 0px;
+    margin-top:-5px;
+}
+#qr{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid red; */
+    margin: 0px 30px;
+}
+#qr > h1{
+    margin-top: 0px;
+}
+#qr> img{
+    border: 2px solid red;
+    
+}
+
+@media only screen and (max-width: 1200px) {
+   
+    #bottom{
+        flex-direction: column-reverse;
+    }
+    #bottom > div> h1{
+        margin: 10px;
+    }
+    #qr{
+        flex-direction: column-reverse;
+    }
+    
+        
+    .topdown > input{
+        font-size: small;
+    }
+
+    #slide2 a{
+        text-decoration: none;
+        width: 80%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 30px 30px;
+    }
+    #slide2 > a h2{
+        color: white;
+        padding-left: 10px;
+        margin-top: -100px;
+        margin-bottom: 0px;
+        font-size: xx-large;
+    }
+    
+    #slide2 >a> div> img{
+        width: 100%;
+        margin-bottom: 0px;
+    }
+    #slider{
+        width:100%;
+        margin: auto;
+        /* border: 1px solid black; */
+        /* height: 550px; */
+       padding-bottom: 0px;
+    
+    }
+    #slider  >img{
+        width:100%;
+        /* border: 1px solid black; */
+        margin: auto;
+      
+    }
+    #slider >h1{
+        font-size: 30px;
+        color: #666666;
+        margin-bottom: 0px;
+    }
+   
+    .slide > span:nth-child(1){
+        margin-left: 1%;
+        padding-right: 25px;
+    }
+    #inc{
+        margin-right: 1%;
+        padding-left: 25px;
+    
+    }
+    #host{
+        display: none;
+    }
 }
