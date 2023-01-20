@@ -98,17 +98,16 @@
     <div class="head"><h1>NEVER STOPs  LIVING</h1></div>
     <div class="login">
         <h1>Welcome !</h1>
-        <h1>Sign up To Continue</h1>
+        <h1>Login up To Continue</h1>
         <form >
-            <input type="text" placeholder="Enter your name" id="name">
-            <input type="email" placeholder="Enter your email" id="email">
-            <input type="number" placeholder="Enter your mobile number" id="no">
+          
+            <input type="email" placeholder="Enter your mobile number" id="no">
             <input type="number"  id="otpenter" placeholder="Enter OTP">
             <button id="otp"> Get OTP</button>
             <button class="enter">Enter</button>
-            <a  href="index.html" class="enter2">GET CARS 🚗</a>
+            <a  href="home.html" class="enter2">Get CARS 🚗</a>
         </form>
-        <h3>Already have an account ? <a href="login.html"> Login</a></h3>
+        <h3>Don't have an account ? <a href="signup.html"> Sign up</a></h3>
     </div>
     <div class="bottom"><h1>TRAVEL WITH COMFORT</h1></div>
 </body>
@@ -134,35 +133,18 @@ enterbtn.addEventListener("click", (e)=>{
     
 })
 
-function blank(){
-    nameInp.value = ""
-    emailInp.value = ""
-    noinp.value = ""
-    Otpinp.value = ""
-}
-
 
 function otp(){
     enterbtn.addEventListener("click", (e)=>{
     e.preventDefault()
-    let otp = 7824;
+    let otp = 1234;
     // console.log(Otpinp.value)
     if(Otpinp.value == otp){
-        warning.innerText = "Please enter a valid number"
-        alert("Signup Successfully")
-        let user = {
-            name: nameInp.value,
-            email: emailInp.value,
-            no : noinp.value,
-        }
-        userdata.push(user)
-        localStorage.setItem("user",JSON.stringify(userdata))
+        warning.innerText = "Login to Continue"
+        alert("Loged in Successfully")
         enterbtn.style.display="none"
         getbtn.style.display="block"
         getbtn.style.backgroundColor="green"
-        getbtn.addEventListener("click", ()=>{
-            blank()
-        })
     }
     else{
         warning.innerText = "Incorrect OTP"
@@ -174,23 +156,19 @@ otpbtn.addEventListener("click", (e)=>{
     e.preventDefault()
     let x = true;    
     for(i=0; i<userdata.length; i++){
-        if(userdata[i].no == noinp.value ){
-            alert("Mobile number already exists")
+        if(userdata[i].no != noinp.value ){
+            alert("Mobile number doesn't exists")
             x = false;
-            break;
+          
         }
     }
-    if(emailInp.value =="" || nameInp.value == ""){
-            warning.innerText = "Please enter correct details"
-            x=false;
-        }
-    else if(noinp.value.length != 10){
+    if(noinp.value.length != 10){
         warning.innerText = "Please enter a valid number"
             x=false;
     }
     if(x== true){
-        warning.innerText = "Sign up To Continue"
-        alert("Please Enter the OTP  7824")
+        warning.innerText = "Login To Continue"
+        alert("Please enter the OTP   1234")
 
     otpbtn.style.display="none"
     Otpinp.style.display="block"
