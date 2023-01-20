@@ -8,7 +8,7 @@
     <link rel="icon" href="./logo2.png" type="img/-icon">
     <style>
     .navbar{
-        
+      width: 100%;  
     color: white;
     box-sizing: border-box;    
     display: flex;
@@ -140,7 +140,131 @@ background-size: cover;
 #container > div >div{
     margin-left: 20px;
 }
+@media screen and (max-width: 1200px) {
+    #log{
+        border: 1px solid black;
+    justify-content: center;
+    font-size: large;
+    width: 45%;
+    display: flex;
+    align-items: center;
+}
+#container > div > div > h2{
+        margin:2px;
+        font-size: large;
+    }
+    #container > div > div > p{
+        margin:0px;
+        
+        /* border: 2px solid red; */
+    }
+#search{
+    /* border: 1px solid black; */
+    padding: 5px;
+    font-size: large;
+    margin-top: 15px;
+   
+}
+#sort > div >select{
+    /* border-radius: 25px; */
+    padding: 0px;
+    align-items: center;
+    font-size: large;
+    margin: auto;
+    margin-top: 15px;
 
+}
+#sort > div:nth-child(2){
+    display: flex;
+    
+}
+#sort  button{
+    background-color: aqua;
+    font-size: large;   
+    margin-top: 14px;
+}
+    #host{
+            display: none;
+        }
+    #sort{
+            flex-direction: column;
+        }
+    #container{
+
+    width: 90%;
+    margin: auto;
+   padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 20px
+    }
+}
+@media screen and (max-width: 700px) {
+    #sort >div span{
+        display: block;
+        font-size: larger;
+        text-align: center;
+    }
+    #log{
+        border: 1px solid black;
+    justify-content: center;
+    font-size: large;
+    width: 45%;
+    display: flex;
+    align-items: center;
+}
+#search{
+    /* border: 1px solid black; */
+    padding: 5px;
+    font-size: large;
+    margin-top: 15px;
+   
+}
+#sort > div >select{
+    /* border-radius: 25px; */
+    padding: 0px;
+    align-items: center;
+    font-size: large;
+    margin: auto;
+    margin-top: 15px;
+
+}
+#sort > div:nth-child(2){
+    display: flex;
+    /* border: 2px solid black; */
+    justify-content: center;
+}
+#sort  button{
+    background-color: aqua;
+    font-size: large;   
+    margin-top: 14px;
+}
+    #host{
+            display: none;
+        }
+    #sort{
+            flex-direction: column;
+            padding-top: 0px;
+        }
+    #container{
+
+    width: 90%;
+    margin: auto;
+   padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 20px
+    }
+    #container > div > div > h2{
+        margin:2px;
+        font-size: large;
+    }
+    #container > div > div > p{
+        margin:0px;
+        
+        /* border: 2px solid red; */
+    }
+}
     </style>
 </head>
 <body>
