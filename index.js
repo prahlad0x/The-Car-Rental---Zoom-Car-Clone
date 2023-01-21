@@ -4,7 +4,19 @@ let dec = document.querySelector("#dec")
 let slideshowimg = [];
 let img_no = 1;
 
-
+let userdata = JSON.parse(localStorage.getItem("user"))||[];
+let no = localStorage.getItem("no")
+// console.log(no)
+let user = document.getElementById("name")
+user.innerText = "User"
+for(i=0; i<userdata.length; i++){
+    if(no == userdata[i].no){
+    user.innerText = userdata[i].name
+    // console.log(user.innerText)
+    localStorage.setItem("name", userdata[i].name)
+        break;
+    }
+}
 
 
 async function fetchcars(url){

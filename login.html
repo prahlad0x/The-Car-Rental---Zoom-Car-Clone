@@ -98,7 +98,7 @@
     <div class="head"><h1>NEVER STOPs  LIVING</h1></div>
     <div class="login">
         <h1>Welcome !</h1>
-        <h1>Login up To Continue</h1>
+        <h1>Login To Continue</h1>
         <form >
           
             <input type="email" placeholder="Enter your mobile number" id="no">
@@ -107,7 +107,7 @@
             <button class="enter">Enter</button>
             <a  href="home.html" class="enter2">Get CARS 🚗</a>
         </form>
-        <h3>Don't have an account ? <a href="signup.html"> Sign up</a></h3>
+        <h3>Don't have an account ? <a href="index.html"> Sign up</a></h3>
     </div>
     <div class="bottom"><h1>TRAVEL WITH COMFORT</h1></div>
 </body>
@@ -142,9 +142,15 @@ function otp(){
     if(Otpinp.value == otp){
         warning.innerText = "Login to Continue"
         alert("Loged in Successfully")
+       
         enterbtn.style.display="none"
         getbtn.style.display="block"
         getbtn.style.backgroundColor="green"
+        getbtn.addEventListener("click", ()=>{
+            let x = noinp.value
+            localStorage.setItem("no", x)
+            Otpinp.value=""
+        })
     }
     else{
         warning.innerText = "Incorrect OTP"
@@ -154,13 +160,14 @@ function otp(){
 
 otpbtn.addEventListener("click", (e)=>{
     e.preventDefault()
-    let x = true;    
+    let x = false;    
     for(i=0; i<userdata.length; i++){
-        if(userdata[i].no != noinp.value ){
-            alert("Mobile number doesn't exists")
-            x = false;
-          
+        if(userdata[i].no == noinp.value ){
+            x = true;
         }
+    }
+    if(x==false){
+        alert("Mobile number doesn't exists")
     }
     if(noinp.value.length != 10){
         warning.innerText = "Please enter a valid number"

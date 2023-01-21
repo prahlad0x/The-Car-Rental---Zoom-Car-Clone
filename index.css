@@ -1,5 +1,5 @@
 .navbar{
-    position: fixed;
+    position:fixed;
     width: 100%;
     color: white;
     box-sizing: border-box;    
@@ -33,13 +33,23 @@
 
 }
 
+#log > a{
+    /* border: 1px solid red; */
+    color: white;
+    text-decoration: none;
+    /* text-align: right.; */
+}
+
 #log{
+    /* border: 1px solid white; */
     cursor: pointer;
     justify-content: space-around;
     font-size: x-large;
     width: 30%;
-    display: flex;
+    /* display: flex; */
     align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
 }
 .navbar h1,h3{
     margin: 0px;
@@ -155,12 +165,13 @@ font-size: large;
 #tophead{
     font-size: 50px;
     text-align: center;
-    margin-top: 50px;
+    padding: 50px;
     font-weight:400;
 }
 .slide{
-
+    /* background-color: #e7dfdf; */
     padding: 35px;
+    padding-bottom: 8%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -187,33 +198,35 @@ font-size: large;
 
 }
 #slider{
+    /* background-color: #666666; */
     width:60%;
     margin: auto;
     /* border: 1px solid black; */
     /* height: 550px; */
    padding-bottom: 0px;
-
+    
 }
 #slider  >img{
     width:100%;
     /* border: 1px solid black; */
     margin: auto;
+    margin-top: -50px;
     
 }
 #slider >h1{
-    font-size:50px;
+    font-size:xx-large;
     color: #666666;
-margin-bottom: -110px;
+margin-bottom: 0px;
 }
 #slider> h2{
-    font-size:30px;
-
-    margin-bottom: -25px;
+    font-size:x-large;
+    margin-top: 0px;
+    margin-bottom: 0px;
     color: #706c6ca8;
 }
 #middleimg{
-    height: 650px;
-    margin-top: 80px;
+    height: 600px;
+
     background-image: url("https://zoomcar-assets.zoomcar.com/images/original/97c77ce8da5affded5e3c4bde712044a90728781.png?1672044755");
     /* background-repeat: no-repeat; */
     background-position: center;
@@ -438,9 +451,15 @@ margin-bottom: -110px;
     #host{
         display: none;
     }
+    #log{
+        gap: 10px;
+    }
 }
 
 @media only screen and (max-width: 700px) {
+     #log{
+        gap: 10px;
+    }
     table > tr > td:nth-child(4){
         display: none;
     }
