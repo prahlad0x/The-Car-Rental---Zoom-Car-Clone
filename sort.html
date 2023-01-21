@@ -83,6 +83,8 @@ body{
     margin-right: 20px;
 }
 #sort{
+    position:inherit;
+    
     padding: 20px;
     border: 1px solid #e0e0e0;
     font-size: larger;
@@ -265,13 +267,17 @@ background-size: cover;
         /* border: 2px solid red; */
     }
 }
+#log a{
+    color: white;
+    text-decoration: none;
+}
     </style>
 </head>
 <body>
     <div class="navbar">
         <div id="logo">
             <img src="./s.png" alt="error">
-            <a href="index.html" >
+            <a href="home.html" >
 
                 <div>
                     <h1>Car Rental</h1>
@@ -285,7 +291,8 @@ background-size: cover;
             <!-- <span></span><img src="./t.png" alt="error"> -->
             <a href="host.html"><h2>Become a Host</h2></a>
         </div>
-        <div id="log">Login/Signup 
+        <div id="log">
+            <a href="user.html" id="name"></a>
             <img src="https://www.zoomcar.com/img/icons/icons_user.png" alt="error">
         </div>
     </div>
@@ -321,6 +328,13 @@ background-size: cover;
 </div>
 </body>
 <script>
+
+let userdata = JSON.parse(localStorage.getItem("user"))||[];
+let no = localStorage.getItem("no")
+// console.log(no)
+let user = document.getElementById("name")
+user.innerText = localStorage.getItem("name")
+
     const sortdata = "https://63c79ab5e52516043f40b73b.mockapi.io/sort"
     let cont = document.getElementById("container")
     fetchdata(sortdata)
