@@ -142,6 +142,25 @@ background-size: cover;
 #container > div >div{
     margin-left: 20px;
 }
+#container > div:hover{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+#container > div > div > button{
+display: block;
+margin: auto;
+margin-top: -16px;
+margin-bottom: 16px;
+background-color: rgb(23, 198, 113);
+border: none;
+cursor: pointer;
+padding: 10px;
+border-radius: 15px;
+box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+#container > div > div > button:hover{
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
 @media screen and (max-width: 1200px) {
     #log{
         border: 1px solid black;
@@ -289,7 +308,7 @@ background-size: cover;
         <div>
         <div id="host">
             <!-- <span></span><img src="./t.png" alt="error"> -->
-            <a href="host.html"><h2>Become a Host</h2></a>
+            <a href="#"><h2>Become a Host</h2></a>
         </div>
         <div id="log">
             <a href="user.html" id="name"></a>
@@ -334,7 +353,7 @@ let no = localStorage.getItem("no")
 // console.log(no)
 let user = document.getElementById("name")
 user.innerText = localStorage.getItem("name")
-
+let booked = JSON.parse(localStorage.getItem("booked"))||[]
     const sortdata = "https://63c79ab5e52516043f40b73b.mockapi.io/sort"
     let cont = document.getElementById("container")
     fetchdata(sortdata)
@@ -370,13 +389,49 @@ user.innerText = localStorage.getItem("name")
             type = document.createElement("p")
             rent = document.createElement("h2")
             di = document.createElement("div")
+            book = document.createElement("button")
+
 
             img.setAttribute("src", element.img)
             names.innerText = element.name
             type.innerText = element.type
             rent.innerText = "₹ "+element.price
-
-            di.append(names, type, rent)
+            let x = "Book Now"
+            for(i=0; i<booked.length; i++){
+                if(booked[i].id == element.id){
+                   x= "Booked"
+                   break;
+                }
+                else{
+                   x = "Book Now"
+                }
+            }
+            
+            book.addEventListener("click", ()=>{
+                
+                let y = "t"
+                for(i=0;i<booked.length; i++){
+                    if(booked[i].id == element.id){
+                        
+                      x= "Booked"
+                        alert("Car already booked ")
+                        y="f"
+                        break;
+                    }
+                }
+                if(y=="t"){
+                    
+                   x= "Booked"
+                    booked.push(element)
+                    display(cars)
+                    alert("Car Booked")
+                    localStorage.setItem("booked", JSON.stringify(booked))
+                    console.log(booked)
+                }
+                                
+            })
+            book.innerText = x
+            di.append(names, type, rent, book)
             card.append(img, di)
             cont.append(card)
         });
@@ -416,7 +471,7 @@ user.innerText = localStorage.getItem("name")
                let x = ele.type.includes("Petrol")
                return x;
             })
-            fuel.value = ""
+            
            display(Petrol)
 
         }

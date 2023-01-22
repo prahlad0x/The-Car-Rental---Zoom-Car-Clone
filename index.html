@@ -34,9 +34,10 @@
     }
 
     .login{
+       
         padding: 20px;
         border-radius: 30px;
-        background-color: white;
+        background: rgb(250, 250, 250, 0.5);
         width: 60%;
         /* border: 2px solid red; */
         margin: auto;
@@ -95,7 +96,7 @@
     </style>
 </head>
 <body>
-    <div class="head"><h1>NEVER STOPs  LIVING</h1></div>
+    <div class="head"><h1>NEVER STOP LIVING</h1></div>
     <div class="login">
         <h1>Welcome !</h1>
         <h1>Sign up To Continue</h1>
@@ -148,7 +149,7 @@ function otp(){
     let otp = 7824;
     // console.log(Otpinp.value)
     if(Otpinp.value == otp){
-        warning.innerText = "Please enter a valid number"
+        warning.innerText = "Signup Successfully"
         alert("Signup Successfully")
         let user = {
             name: nameInp.value,
@@ -178,8 +179,14 @@ otpbtn.addEventListener("click", (e)=>{
     let x = true;    
     for(i=0; i<userdata.length; i++){
         if(userdata[i].no == noinp.value ){
-            alert("Mobile number already exists")
+           warning.innerText = "Mobile number already exists"
             x = false;
+            break;
+        }
+            
+        else if(userdata[i].email == emailInp.value){
+            warning.innerText = "Email id already exists"
+            x=false;
             break;
         }
     }

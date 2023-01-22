@@ -4,16 +4,220 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CAR RENTAL - User</title>
+    <link rel="icon" href="./logo2.png" type="img/-icon">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .details{
+            padding: 2%;
+            width: 90%;
+            margin: auto;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        }
+        .head{
+         
+            text-align: center;
+            border-bottom: 1px solid grey;
+        }
+        #accountdetails h2{
+            margin-top:5%;
+            border-bottom: 1px solid gray;
+        }
+        #personaldetails h2{
+            margin-top:5%;
+            border-bottom: 1px solid gray;
+        }
+        #accountdetails div:nth-child(2) {
+            margin-bottom: 20px;
+        }
+        #email{
+            font-size: large;
+        }
+        #carsbooked > h1{
+            padding: 10px;
+            text-align: center;
+            margin-top: 100px;
+            border-bottom: 1px solid black;
+            border-top: 1px solid black;
+        }
+        #container{
+    width: 80%;
+    margin: auto;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 50px;
+    }
+#container> div > img{
+width: 100%;
+background-image: url("https://www.zoomcar.com/img/marketplace-background.png");
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+}
+#container > div{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border: 1px solid #e0e0e0;
+}
+#container > div >div{
+    margin-left: 20px;
+}
+#container > div:hover{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+#container > div > div > button{
+display: block;
+color: white;
+margin: auto;
+margin-top: -16px;
+margin-bottom: 16px;
+background-color: rgba(198, 23, 23, 0.939);
+border: none;
+cursor: pointer;
+padding: 10px;
+border-radius: 15px;
+box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+#container > div > div > button:hover{
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+        @media screen and (max-width: 700px){
+            #container{
+
+width: 90%;
+margin: auto;
+padding: 0px;
+display: grid;
+grid-template-columns: repeat(1,1fr);
+gap: 20px
+}
+#container > div > div > h2{
+    margin:2px;
+    font-size: large;
+}
+#container > div > div > p{
+    margin:0px;
+    
+    /* border: 2px solid red; */
+}  
+        }
+        hr{
+            margin-top: 50px;
+            height: 2px;
+            background-color: black;
+        }
+        .logout{
+            cursor: pointer;
+            padding: 6px 8px;
+            font-size: large;
+            display: block;
+            margin: auto;
+            margin-top: 40px;
+           
+        }
+        .logout a{
+            color:black;
+
+            text-decoration: none;
+        }
+       
+            
+    </style>
 </head>
 <body>
-    hii
+    <div class="details">
+        <div class="head"><h1>My Account</h1></div>
+        <div id="accountdetails">
+            <div><h2>Account Details</h2></div>
+           <div>Email :  <span id="email"></span></div>
+            <div> Mobile :<span id="mob"></span></div>
+        </div>
+        <div id="personaldetails">
+            <div><h2>Personal Details</h2></div>
+            <span>Name :</span><span id="name"></span>
+            
+        </div>
+        <hr>
+        
+        <button class="logout" > <a href="index.html" >Logout </a></button>
+
+    </div>
+    <div id="carsbooked">
+        <h1>My Bookings</h1>
+        <div id="container"></div>
+    </div>
 </body>
 <script>
-    let x = "prahlad"
-    localStorage.setItem("name", x)
-    setTimeout(() => {
-        console.log(localStorage.getItem("name"))
-    }, 3000);
+    let bookedcars = JSON.parse(localStorage.getItem("booked"))||[]
+    let no = localStorage.getItem("no")
+    let userdata = JSON.parse(localStorage.getItem("user"))||[];
+    let cont = document.getElementById("container")
+   
+let Email = document.getElementById("email")
+    let naam = document.getElementById("name")
+    let mob = document.getElementById("mob")
+   for(i=0; i<userdata.length; i++){
+    if(userdata[i].no == no){
+        Email.innerText = userdata[i].email
+        naam.innerText = userdata[i].name
+        mob.innerText = userdata[i].no
+        break;
+    }
+   }
+console.log(bookedcars)
+display(bookedcars)
+   function display(data){
+        // console.log(data)
+        cont.innerHTML = ''
+        if(data.length == 0){
+            h = document.createElement("h1")
+            btn = document.createElement("button")
+            an= document.createElement("a")
+            an.setAttribute("href", "sort.html")
+            h.innerText = " No Booking Yet!"
+            h.style.textAlign="center"
+            cont.style.display="block"
+            h
+            btn.innerText = "Book a car now"
+            btn.style.display="block"
+            btn.style.margin="auto"
+            btn.style.textAlign="center"
+            cont.style.display="block"
+            an.style.textDecoration = "none"
+            an.append(btn)
+            cont.append(h,an)
+        }
+        else{
+        
+        data.forEach((element) => {
+            card = document.createElement("div")
+            img = document.createElement("img")
+            names = document.createElement("h2")
+            type = document.createElement("p")
+            rent = document.createElement("h2")
+            di = document.createElement("div")
+            book = document.createElement("button")
+            book.innerText = "Cancel Booking"
+            img.setAttribute("src", element.img)
+            names.innerText = element.name
+            type.innerText = element.type
+            rent.innerText = "₹ "+element.price
+            book.addEventListener("click", ()=>{
+            book.innerText = "Cancel Booking"
+                bookedcars =bookedcars.filter((ele)=>{
+                    return (element.id != ele.id)
+                })            
+                localStorage.setItem("booked", JSON.stringify(bookedcars))    
+                   display(bookedcars)             
+            })
+            di.append(names, type, rent, book)
+            card.append(img, di)
+            cont.append(card)
+        });
+    }
+    }
 </script>
 </html>

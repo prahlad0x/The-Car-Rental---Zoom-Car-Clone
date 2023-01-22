@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CARS RENTAL- Signup</title>
+    <title>CARS RENTAL- Login</title>
     <link rel="icon" href="./logo2.png" type="img/-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,7 @@
     .login{
         padding: 20px;
         border-radius: 30px;
-        background-color: white;
+        background: rgb(250, 250, 250, 0.5);
         width: 60%;
         /* border: 2px solid red; */
         margin: auto;
@@ -89,6 +89,16 @@
         color: white;
         font-size: large;
     }
+    .admin{
+        
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        color: white;
+        font-size: large;
+    }
    
 
    
@@ -101,11 +111,12 @@
         <h1>Login To Continue</h1>
         <form >
           
-            <input type="email" placeholder="Enter your mobile number" id="no">
+            <input type="number" placeholder="Enter your mobile number" id="no">
             <input type="number"  id="otpenter" placeholder="Enter OTP">
             <button id="otp"> Get OTP</button>
             <button class="enter">Enter</button>
-            <a  href="home.html" class="enter2">Get CARS 🚗</a>
+            <a  href="home.html" class="enter2">GET CARS 🚗</a>
+            <a  href="admin.html" class="admin">Welcome Admin</a>
         </form>
         <h3>Don't have an account ? <a href="index.html"> Sign up</a></h3>
     </div>
@@ -122,16 +133,13 @@ Otpinp.style.display="none"
 let otpbtn = document.getElementById("otp")
 let enterbtn = document.querySelector(".enter")
 let getbtn = document.querySelector(".enter2")
-
+let adminbth = document.querySelector(".admin")
+adminbth.style.display="none"
 getbtn.style.display="none"
 enterbtn.style.display= "none"
 let warning = document.querySelector("h1:nth-child(2)")
 
-enterbtn.addEventListener("click", (e)=>{
-    e.preventDefault() 
-    otp()
-    
-})
+
 
 
 function otp(){
@@ -160,10 +168,29 @@ function otp(){
 
 otpbtn.addEventListener("click", (e)=>{
     e.preventDefault()
-    let x = false;    
-    for(i=0; i<userdata.length; i++){
-        if(userdata[i].no == noinp.value ){
-            x = true;
+    if(noinp.value == 7987033829){
+        otpbtn.style.display="none"
+        Otpinp.style.display="block"
+        enterbtn.style.display="block"
+        alert("Admin OTP >>>> 6969")
+        enterbtn.addEventListener("click", (e)=>{
+            e.preventDefault()
+            if(Otpinp.value == 6969){
+                
+                
+                Otpinp.style.display="none"
+                adminbth.style.display="block"
+                adminbth.style.backgroundColor ="green"
+                enterbtn.style.display="none"
+            }
+        })
+    }
+    else{
+
+        let x = false;    
+        for(i=0; i<userdata.length; i++){
+            if(userdata[i].no == noinp.value ){
+                x = true;
         }
     }
     if(x==false){
@@ -176,13 +203,18 @@ otpbtn.addEventListener("click", (e)=>{
     if(x== true){
         warning.innerText = "Login To Continue"
         alert("Please enter the OTP   1234")
-
-    otpbtn.style.display="none"
-    Otpinp.style.display="block"
-    enterbtn.style.display="block"
-
-      otp()
+        
+        otpbtn.style.display="none"
+        Otpinp.style.display="block"
+        enterbtn.style.display="block"
+        enterbtn.addEventListener("click", (e)=>{
+            e.preventDefault()
+            Otpinp.style.display="none"
+        
+        })
+        otp()
     }
+}
 
 })
 
