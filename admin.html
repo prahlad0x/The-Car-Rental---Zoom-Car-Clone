@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAR RENTAL- Admin</title>
+    <link rel="icon" href="./logo2.png" type="img/-icon">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
+<style>
+    .main {
+        width: 90%;
+        margin: auto;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        padding: 40px;
+    }
+    .main > h1:first-child{
+        text-decoration: underline;
+    }
+    .admin{
+        font-size: 70px;
+        border-bottom: 1px solid gray;
+    }
+    .box{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        /* border: 1px solid grey; */
+        margin-bottom: 50px;
+        gap: 40px;
+    }
+    .box>div{
+        border-bottom: 1px solid gray;
+       
+        width: 100%;
+        padding: 20px;
+    }
+    .box > div:hover{
+       border: none;
+        cursor: pointer;
+        border: 1px solid grey;
+    }
+    table{
+       
+        justify-content: space-between;
+        text-align: center;
+        display: none;
+        margin: auto;
+        width: 100%;
+        border: 1px solid rgb(3, 3, 3);
+    }
+    tbody{
+        text-align: center;
+        width: 100%;
+        border: 1px solid black;
+    }
+    thead{
+       
+       margin-bottom: 40px;
+       
+    }
+    th{
+        width: 45%;
+    }
+    tr{
+        justify-content: space-between;
+       
+    }
+   
+    td{
+        border: 1px solid rgba(5, 5, 5, 0.676);
+        margin: auto;
+       
+    }
+    a{
+        text-decoration: none;
+        color: black;
+        text-align: left;
+    }
+    a> h3{
+        text-align: left;
+        margin-bottom: 50px;
+
+    }
+    h3:hover{
+        text-decoration: line-through;
+    }
+
+</style>
+</head>
+<body>
+    <div class="main">
+        <h1> Welcome Admin</h1>
+        <h1 class="admin">ADMIN
+        </h1>
+        <a href="home.html"> <h3>GO TO WEBSITE</h3></a>
+        <div class="box">
+            <div id="users">User Data</div>
+            <div id="cars"> Cars Data</div>
+          
+        </div>
+        <table>
+            <thead>
+                <th id="n">User name</th>
+                <th id="m">Mobile</th>
+                <th id="e">Email</th>
+               
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+    </div>
+    
+</body>
+<script >
+    let userdata = JSON.parse(localStorage.getItem("user"))||[]
+    let cont = document.querySelector("tbody")
+    let cars = [];
+    const cardata = "https://63c79ab5e52516043f40b73b.mockapi.io/sort"
+    
+    let U = document.getElementById("users")
+    U.addEventListener("click", ()=>{
+        displayusers(userdata)
+    })
+    C = document.getElementById("cars")
+    C.addEventListener("click",()=>{
+        fetchdata(cardata)
+    })
+    
+    async function fetchdata(url){
+        try {
+            let request = await fetch(url)
+            let data = await request.json()
+            
+            cars = data
+            displaycars(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    function displaycars(data){
+        let tab = document.querySelector("table")
+        tab.style.display="inline"
+        let n= document.querySelector("#n")
+        n.innerText = "Car Name"
+        let m= document.querySelector("#m")
+        m.innerText = "Price per hour"
+        let e= document.querySelector("#e")
+        e.innerText = "Type"
+
+        cont.innerHTML = ""
+        data.forEach((element) => {
+           row= document.createElement("tr")
+           nam = document.createElement("td")
+           nam.innerText = element.name
+           type = document.createElement("td")
+           type.innerText = element.type
+           price = document.createElement("td")
+           price.innerText = element.price
+           row.append(nam, price,type)
+           cont.append(row)
+        });
+    }
+    function displayusers(data){
+        let tab = document.querySelector("table")
+        tab.style.display="inline"
+        let n= document.querySelector("#n")
+        n.innerText = "User name"
+        let m= document.querySelector("#m")
+        m.innerText = "Email"
+        let e= document.querySelector("#e")
+        e.innerText = "Mobile"
+        
+        cont.innerHTML = ""
+        data.forEach(element => {
+           row= document.createElement("tr")
+           nam= document.createElement("td")
+           nam.innerText = element.name
+           email = document.createElement("td")
+           email.innerText = element.email
+          
+           no = document.createElement("td")
+           no.innerText = element.no
+           row.append(nam, email, no)
+           cont.append(row)
+        });
+    }
+</script>
+</html>

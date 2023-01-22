@@ -16,6 +16,12 @@ for(i=0; i<userdata.length; i++){
     localStorage.setItem("name", userdata[i].name)
         break;
     }
+    else if(no == userdata[i].no){
+    user.innerText = userdata[i].name
+    // console.log(user.innerText)
+    localStorage.setItem("name", userdata[i].name)
+        break;
+    }
 }
 
 
